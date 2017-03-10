@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台</title>
+	<link rel="stylesheet" href="css/video.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="title"><p>My Video</p></div>
+        <button id="start">创建直播直播</button>
+        <input id="input_num" type="text">
+        <div class="user">
+            <div class="login"><a href="javascript:;">登录</a></div>
+            <div>|</div>
+            <div class="register"><a href="javascript:;">注册</a></div>
+        </div>
+    </div>
+	<div class="player">
+        <video src="video/See you again.mp4"></video>
+        <div class="controls">
+            <!-- 播放/暂停 -->
+            <a href="javascript:;" class="switch fa fa-play"></a>
+            <!-- 全屏 -->
+            <a href="javascript:;" class="expand fa fa-expand"></a>
+            <!-- 声音显示 -->
+            <!-- <a href="javascript:;" class="volume fa fa-volume-up">
+                <input class="vo_range" type="range" min="0" max="100" value="10" step="1">
+            </a> -->
+            <div id="volume">
+                <div class="vo_range">
+                    <span>12</span>
+                    <input type="range" min="0" max="100" step="1" onchange="rangeChange()" />
+                </div>
+                <div class="volume fa fa-volume-up"></div>
+            </div>
+            <!-- 进度条 -->
+            <div class="progress">
+                <div class="loaded"></div>
+                <div class="line"></div>
+                <div class="bar"></div>
+            </div>
+            <!-- 时间 -->
+            <div class="timer">
+                <span class="current">00:00:00</span> /
+                <span class="total">00:00:00</span>
+            </div>
+            <!-- 声音 -->
+        </div>
+        <div id="showlike"></div>
+    </div>
+    <div class="textbox">
+        <div class="messageboard" id="ans"></div>
+        <div class="bulletscreen"></div>
+    </div>
+
+    
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/video.js"></script>
+</body>
+</html>

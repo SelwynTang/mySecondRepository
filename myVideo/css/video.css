@@ -1,0 +1,232 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: 'microsoft yahei', 'Helvetica', simhei, simsun, sans-serif;
+	background-color: #9cdf3c;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: #666;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+
+figcaption {
+	font-size: 24px;
+	text-align: center;
+	margin: 20px;
+}
+
+
+/*导航栏*/
+.nav{
+	width: 100%;
+	overflow: hidden;
+	height: 50px;
+	line-height: 50px;
+	background-color: #fed001;
+}
+.nav .title{
+	float: left;
+	font-size: 32px;
+}
+.nav .user{
+	float: right;
+}
+.nav .user>div{
+	float: left;
+}
+.nav .user .login{
+	margin: 0 20px;
+}
+.nav .user .register{
+	margin: 0 20px;
+}
+
+/*播放器*/
+.player {
+	width: 720px;
+	height: 360px;
+	margin: 50px 0 0 100px;
+	background: #000 url(../img/loading.gif) center/300px no-repeat;
+	position: relative;
+	float: left;
+}
+
+video {
+	display: none;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.controls {
+	width: 720px;
+	height: 40px;
+	background-color: #2196F3;
+	position: absolute;
+	left: 0;
+	bottom: -40px;
+	z-index: 99;
+	opacity: 0.7;
+}
+
+.player:hover .controls {
+	opacity: 1;
+}
+
+/*播放/暂停*/
+.controls .switch {
+	display: block;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: #FFF;
+	position: absolute;
+	top: 11px;
+	left: 11px;
+}
+.controls .switch:hover {
+	color: #555;
+}
+
+/*全屏按钮*/
+.controls .expand {
+	display: block;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: #FFF;
+	position: absolute;
+	right: 11px;
+	top: 11px;
+}
+.controls .expand:hover {
+	color: #555;
+}
+
+/*声音显示按钮*/
+#volume{
+	width: 30px;
+	position: absolute;
+	right: 45px;
+    bottom: 5px;
+    cursor: pointer;
+}
+#volume .vo_range{
+	display: none;
+}
+#volume .vo_range>input{
+	height: 30px; 
+	line-height: 30px; 
+	width: 130px;	
+	position: absolute;
+	left: -57px;
+    bottom: 28px;
+}
+#volume .vo_range>span{
+	position: absolute;
+	left: -74px;
+    bottom: 37px;
+    color: #fff;
+    font-size: 12px;
+}
+#volume .volume{
+	width: 30px;
+	height: 30px;
+	line-height: 30px; 
+	color: #fff;
+	font-size: 20px;
+}
+#volume:hover .vo_range{
+	display: block;
+}
+/*音量控制*/
+
+
+/*进度条*/
+.progress {
+	width: 430px;
+	height: 10px;
+	border-radius: 3px;
+	overflow: hidden;
+	background-color: #555;
+	cursor: pointer;
+	position: absolute;
+	top: 16px;
+	left: 45px;
+}
+
+/*下载进度*/
+.progress .loaded {
+	width: 0;
+	height: 100%;
+	background-color: blue;
+}
+
+/*播放进度*/
+.progress .line {
+	width: 0;
+	height: 100%;
+	background-color: #FFF;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/**/
+.progress .bar {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+
+/*时间*/
+.timer {
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	left: 490px;
+	top: 11px;
+	color: #FFF;
+	font-size: 14px;
+}
+
+/*点赞*/
+#showlike {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+/*留言板*/
+.textbox{
+	width: 350px;
+	height: 400px; 
+	float: left;
+	margin: 50px 0 0 20px;
+}
+.textbox .messageboard{
+	width: 100%;
+	height: 360px;
+	border: 1px solid #000;
+	box-sizing: border-box;
+}
+.textbox .bulletscreen{
+	width: 100%;
+	height: 30px;
+	margin-top: 10px;
+	border: 1px solid #000;
+	box-sizing: border-box;
+}
+

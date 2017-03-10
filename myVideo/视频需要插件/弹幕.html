@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 800px;
+            height: 500px;
+            background: #000000;
+            border: 5px solid red;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #box p{
+            word-wrap: normal;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div>
+        <input type="text" name="ctn" id="ctn">
+    </div>
+</body>
+<script>
+    function dm(opt) {
+        this.box = document.getElementById(opt.box);
+        this.ipt = document.getElementById(opt.ipt);
+    }
+    dm.prototype.pull = function () {
+        var oP = document.createElement('p');
+        oP.innerHTML = this.ipt.value;
+        var r = Math.floor(Math.random() * 255 + 1);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        var t = Math.floor(Math.random() * (this.box.clientHeight - oP.offsetHeight - 16));
+        var c = r + ',' + g + ',' + b;
+        oP.rg = (-1) * oP.offsetWidth;
+        oP.sx = Math.floor(Math.random() * 8 + 1);
+        oP.style.cssText = 'position:absolute;color:rgb(' + c + ');top:' + t + 'px;right:' + oP.rg + 'px;font-size:16px;';
+        this.ipt.value = '';
+        var self = this;
+        oP.timer = setInterval(function () {
+            oP.rg += oP.sx;
+            if (oP.rg > self.box.clientWidth) {
+                clearInterval(oP.timer);
+                self.box.removeChild(oP)
+            }
+            oP.style.right = oP.rg + 'px';
+        }, 10)
+
+        this.box.appendChild(oP)
+    }
+
+    var btn = document.getElementById('btn');
+    var d = new dm({
+        box: 'box',
+        ipt: 'ctn'
+    })
+    document.onkeydown = function (e) {
+        if (e.keyCode == 13) {
+            d.pull()
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 1000px;
+            height: 600px;
+            background: #000000;
+            border: 5px solid red;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #box div {
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    function zan(id) {
+        this.box = document.getElementById(id);
+    }
+    zan.prototype.move = function () {
+        var star = document.createElement('div');
+        //设置随机背景色
+        var r = Math.floor(Math.random() * 255 + 1);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        //设置速度
+        star.sy = 0;
+        star.ay = Math.floor(Math.random()*11 + 5);
+        star.sx = Math.floor(Math.random()*60);
+        var num = parseInt(Math.random()*10) + 1;
+        star.style.cssText = 'background:url("img/zan' + num + '.png") no-repeat center;right:'+star.rg+'px;bottom:-30px;width:30px;height:30px;';
+        var self = this;
+        star.timer = setInterval(function(){
+            star.sy+=star.ay;
+            var x = Math.cos(star.sy * Math.PI / 180)*star.sx;
+            if(star.sy>500){
+                clearInterval(star.timer);
+                self.box.removeChild(star)
+            }
+            star.style.right = x+ 60 + 'px';
+            star.style.bottom = star.sy + 'px';
+        },50)
+        this.box.appendChild(star)
+    }
+    
+    var z = new zan('box');
+    document.onclick = function(){
+        z.move()
+    }
+    
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>客户端</title>
+	<link rel="stylesheet" href="css/customer.css">
+</head>
+<body>
+	<!-- 登录注册 -->
+	<div id="register_login">
+		<div class="registerBox">
+			<div class="rb_title">
+				<p class="fl">链能直播</p>
+				<img class="fr" src="img/quit.png" alt="退出">
+			</div>
+			<div class="rb_nav">
+				<a class="rbnav_left fl" href="javascript:;">登录</a>
+				<a class="rbnav_right fr" href="javascript:;">注册</a>
+			</div>
+			<div class="rb_box">
+				<div class="rb_register">
+					<form id="upload_pic" enctype='multipart/form-data' method='post' action='#'>
+					    <div class="upload-box add-button">请点击“选择文件”</div>
+					    <input type="file" name="files"  id="pic_files" >
+					</form>
+					<div>账号：<input class="fr third_user_id" type="text"></div>
+					<div>密码：<input class="fr third_user_pass" type="text"></div>
+					<div>手机号：<input class="fr third_user_phone" type="text"></div>
+					<div>昵称：<input class="fr third_user_name" type="text"></div>
+					<div><input class="sub_register mysubmit" type="submit" value="注册"></div>
+				</div>
+				<div class="rb_login">
+					<div>账号： <input class="fr third_user_id" type="text"></div>
+					<div>密码： <input class="fr" type="text"></div>
+					<div><input class="sub_login mysubmit" type="submit" value="登录"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 头部信息 -->
+	<div class="hearder_box">
+		<div class="header">
+			<div class="h_left fl"><img src="img/h_logo.png" alt="链能网logo"></div>
+			<div class="h_nav fl">
+				<ul>
+					<li>昨天</li>
+					<li>今天</li>
+					<li>明天</li>
+				</ul>
+			</div>
+			<div class="h_right fr">
+				<a class="hr_login" href="javascript:;">登录</a>
+				<a class="hr_register" href="javascript:;">注册</a>
+			</div>
+		</div>
+	</div>
+	<!-- 中间内容区域 -->
+	<div class="content">
+		<div class="cnt_top">
+			<div class="cnt_title">
+				<span class="ct_cheme fl"></span>
+				<span class="ct_order fl">预约</span>
+				<div class="ct_browse fr"><span></span>人浏览</div>
+			</div>
+			<div class="cnt_introduce">
+				<div class="ci_host fl">播主：<a href="javascript:;" class="ciHost"></a></div>
+				<div class="ci_time fl">直播时间：<span class="ciTime"></span></div>
+				<div class="ci_focus fr">
+					<a href="javascript:;">关注主播</a>
+					<a href="javascript:;">1999</a>
+				</div>
+				<div class="ci_share fr">
+					<i></i>
+					<a href="javascript:;">分享直播</a>
+				</div>
+				<div class="ci_report fr">
+					<i></i>
+					<a href="javascript:;">举报</a>
+				</div>
+			</div>
+		</div>
+		<iframe id="myiframe" width="100%" src="" frameborder="0"></iframe>
+		<hr />
+		<div class="cnt_bottom">
+			<p>活动简介</p>
+			<div class="activity_intro"></div>
+		</div>
+	</div>
+	<!-- 页面底部 -->
+	<div class="footer">
+		<div class="f_center">
+			<div class="aboveus">
+				<a href="javascript:;">关于我们</a>
+				<a href="javascript:;">合作伙伴</a>
+				<a href="javascript:;">加入链能</a>
+				<a href="javascript:;">平台介绍</a>
+				<a href="javascript:;">服务条款</a>
+				<a href="javascript:;">常见问题</a>
+			</div>
+			<p>京ICP备10024611号-4京公网安备11010502008915</p>
+			<p>© lianneng 2015.All Rights Reserved.</p>
+		</div>
+	</div>
+</body>
+
+<script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/customer.js"></script>
+</html>

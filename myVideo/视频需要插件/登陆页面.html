@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style>
+	*{margin:0; padding:0}
+		#btn{ cursor:pointer; width:100px; height:50px; background:red; margin:100px auto; border-radius:6px; color:#ffffff; text-align:center; line-height:50px;}
+
+		#box{ width:100%; height:100%; position:fixed; left:0; top:0;display:none;}
+
+		#bg{ width:100%; height:100%; opacity:0.5; background:#ccccff; }
+
+		#block{ width:400px; height:400px;background:green; position:absolute;left:50%;top:50%;margin-top:-200px; margin-left:-200px; }
+
+		#bar{ width:100%; height:50px; background:#ffff99; cursor:move;}
+	</style>
+	<script>
+		window.onload=function()
+		{
+			var btn = document.getElementById("btn");
+			var box = document.getElementById("box");
+			var bg = document.getElementById("bg");
+			var bar = document.getElementById("bar");
+			var block = document.getElementById("block");
+
+			btn.onclick= function()
+			{
+				box.style.display="block";
+				
+				bar.onmousedown = function(event)
+				{	
+					var e = event||window.event;
+					var starX = e.offsetX;
+					var starY = e.offsetY;
+					box.onmousemove = function(event)
+					{
+						var e = event||window.event;
+						var posX = e.clientX-starX;
+						var posY = e.clientY-starY;
+						if( posX<0)
+						{
+							posX=0;
+						}
+						else if(posX>box.clientWidth-block.clientWidth)
+						{
+							posX=box.clientWidth-block.clientWidth;
+						}
+						if( posY<0)
+						{
+							posY=0;
+						}
+						else if(posY>box.clientHeight-block.clientHeight)
+						{
+							posY=box.clientHeight-block.clientHeight;
+						}
+							block.style.top=posY+"px";
+							block.style.left=posX+"px";
+							block.style.margin=0;
+					}
+					box.onmouseup = function()
+					{
+						box.onmousemove=null;
+					}
+
+				}
+				bg.onclick=function()
+				{
+					box.style.display="none";
+				}
+			}
+		}	
+	</script>
+ </head>
+ <body>
+	<div id = "btn">点击登陆</div>
+	<div id="box">
+		<div id="bg"></div>
+		<div id="block">
+			<div id="bar"></div>
+		</div>
+
+	</div>
+ </body>
+</html>

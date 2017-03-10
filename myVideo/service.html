@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发起端</title>
+	<style>
+		html, body{
+			height: 100%;
+		}
+		.box{
+			width: 100%;
+			margin-top: 100px;
+		}
+		.box>a{
+			width: 300px;
+			height: 50px;
+			line-height: 50px;
+			border-radius: 5px;
+			background-color: #fa9157;
+			margin: 0 auto;
+			display: block;
+			text-decoration: none;
+			color: #fff;
+			text-align: center;
+		}
+		#start{
+			width: 100px;
+			background-color: #9cdf3c;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<!-- <button id="start">创建直播</button> -->
+	<!-- <input id="input_num" type="text"> -->
+	<div class="box">
+		<a id="start" href="javascript:;">创建直播</a>
+		<br />
+		<a id="btn01" target="_blank" href="javascript:;">发起端开始直播（请先创建直播）</a>
+		<br />
+		<a id="btn02" target="_blank" href="javascript:;">客户端观看直播（请先创建直播）</a>
+	</div>
+</body>
+
+<script src="js/jquery-2.0.3.min.js"></script>
+<script>
+	//创建活动
+	function fnCreate(data){
+		var webinar_id = data.data;
+		// 打开新的页面并且传递参数
+		// window.open ("file:///C:/XAMPP/htdocs/myVideo/customer.html?"+ webinar_id);
+		// 当前页面跳转到目标页面并且传递参数
+		// document.location.href = "file:///C:/XAMPP/htdocs/myVideo/customer.html?" + webinar_id;
+		//传递参数
+		oBtn02.href = "file:///C:/XAMPP/htdocs/myVideo/customer.html?" + webinar_id;
+	    console.log(webinar_id);
+	    console.log("http://e.vhall.com/webinar/inituser/" + webinar_id);
+	    // inputNum.value = webinar_id;
+		var startURL = "http://e.vhall.com/api/vhallapi/v2/webinar/start";
+		var startData = {
+			auth_type: 1,
+		    account: "v15483438",
+		    password: "Beijing20170227",
+			webinar_id : webinar_id
+		};
+		//获取直播页面URL
+		function fnStart(data){
+			console.log(data.data);
+			oBtn01.href = data.data;
+
+	    	//获取活动信息
+	    	// var fetchURL = "http://e.vhall.com/api/vhallapi/v2/webinar/fetch";
+	    	// // var num_id = parseInt(inputNum.value);
+	    	// var fetchData = {
+	    	// 	auth_type: 1,
+	    	// 	account: "v15483438",
+	    	// 	password: "Beijing20170227",
+	    	// 	webinar_id: webinar_id,
+	    	// 	fields: 'id: webinar_id,user_id: "v15483438",subject: "我的培训",t_start: 1489562018'
+	    		
+	    	// }
+	    	// function fnFetch(data){
+	    	// 	console.log(data);
+	    	// }
+	    	// fnAjax(fetchURL, fetchData, fnFetch);
+
+		};
+		fnAjax(startURL, startData, fnStart);
+
+		
+	};
+
+	function fnAjax(url, data, fn) {
+	    $.ajax({
+	        //提交数据的类型 POST GET
+	        type: "POST",
+	        //提交的网址
+	        url: url,
+	        //提交的数据
+	        data: data,
+	        //返回数据的格式
+	        datatype: "json", //"xml", "html", "script", "json", "jsonp", "text".
+	        //在请求之前调用的函数
+	        // beforeSend: function() {
+	        //     $("#msg").html("logining");
+	        // },
+	        //成功返回之后调用的函数             
+	        success: function(data) {
+	            fn(data);
+	        },
+	        //调用执行后调用的函数
+	        // complete: function(XMLHttpRequest, textStatus) {
+	        //     alert(XMLHttpRequest.responseText);
+	        //     alert(textStatus);
+	        //     HideLoading();
+	        // },
+	        //调用出错执行的函数
+	        error: function() {
+	            //请求出错处理
+	            alert("error")
+	        }
+	    });
+
+	};
+
+	var webinar_id = null;
+	var createURL = "http://e.vhall.com/api/vhallapi/v2/webinar/create";
+	var createData = {
+	    auth_type: 1,
+	    account: "v15483438",
+	    password: "Beijing20170227",
+	    subject: "我的培训",
+	    start_time: 1489568400
+	};
+
+	var oStart = document.getElementById("start");
+	// var inputNum = document.getElementById("input_num");
+	var oBtn01 = document.getElementById("btn01");
+	var oBtn02 = document.getElementById("btn02");
+	oStart.onclick = function() {
+		alert("创建成功");
+	    fnAjax(createURL, createData, fnCreate);
+	}
+	oBtn01.onclick = function(){
+		if(this.href == "javascript:;"){
+			alert("请先创建直播");
+		}
+	};
+	oBtn02.onclick = function(){
+		if(this.href == "javascript:;"){
+			alert("请先创建直播");
+		}
+	}
+
+
+
+
+</script>
+</html>

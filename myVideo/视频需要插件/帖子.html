@@ -1,0 +1,128 @@
+w<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style>
+		#div1{width:300px; height:300px; background:red;  display:none; position:absolute;left:50%;top:50%; margin-left:-150px;margin-top:-150px}
+		#tex1{width:250px;height:100px; margin-top:50px;margin-left:25px }
+		#button1{margin-top:50px;margin-left:50px; }
+		#button2{margin-top:50px;margin-left:100px;}
+		table{border-collapse:collapse}
+		td{width:400px; height:50px; border:solid #660066 1px}
+		#mbe{width:100%; height:100%; background:#6699ff; opacity:0.6; position:absolute;left:0; top:0}
+		#mb{width:100%; height:100%; display:none; position:fixed;left:0; top:0}
+		#div2{ width:300px; height:50px; background:#ffff99; cursor:move;position:absolute}
+		
+	</style>
+	<script>
+		window.onload = function()
+		{
+			var btn = document.getElementById("btn0");
+			var mb = document.getElementById("mb");
+			btn.onclick = function()
+			{	
+				mb.style.display="block";
+				div1.style.display="block";
+				var btn1 = document.getElementById("button1");
+				btn1.onclick = function(){
+				
+				var text1 = document.getElementById("tex1").value;
+				var table = document.getElementById("tb");
+
+				var tr = document.createElement("tr");
+				var td = document.createElement("td");
+				var textNode1 = document.createTextNode(text1);
+				
+				td.appendChild(textNode1);
+				tr.appendChild(td);
+				table.appendChild(tr);
+				div1.style.display="block";
+				mb.style.display="none";
+				}
+				var btn2 = document.getElementById("button2");
+				btn2.onclick = function()
+				{
+					div1.style.display="none";
+					mb.style.display="none";
+				}
+				div2.onmousedown=function(event)
+				{	
+					
+					var e = event||window.event;
+					var strX = e.offsetX;
+					var strY = e.offsetY;
+					mb.onmousemove = function(event)
+					{   
+						div1.style.margin=0;
+						var e = event||window.event
+						var poX = e.clientX-this.offsetLeft-strX;
+						var poY = e.clientY-strY;
+						
+						if (poX<0)
+						{
+							poX=0;
+						}
+						else if (poX>mb.offsetWidth-div1.offsetWidth)
+						{
+							poX=mb.offsetWidth-div1.offsetWidth;
+						}
+						if(poY<0)
+						{
+							poY=0;
+						}
+						else if(poY>mb.offsetHeight-div1.offsetHeight)
+						{
+							poY=mb.offsetHeight-div1.offsetHeight
+						}
+						div1.style.top=poY+'px';
+						div1.style.left=poX+'px';
+					}
+					div2.onmouseup=function()
+					{
+						mb.onmousemove =null;
+					}
+				}
+			}
+		}
+	</script>
+ </head>
+ <body>
+ 
+	<table id="tb">
+		<tr>
+			<td >曾经沧海难为水</td>
+		</tr>
+		<tr>
+			<td>除去巫山不是云</td>
+		</tr>
+		<tr>
+			<td>十里亭外霜满天</td>
+		</tr>
+		<tr>
+			<td>寸寸青丝愁华年</td>
+		</tr>
+		<tr>
+			<td>只羡鸳鸯不羡仙</td>
+		</tr>
+	</table>
+	<input type="button" id="btn0" value="发布帖子" style="margin-left:150px; width:150px">
+	
+	
+	
+	<div id="mb"> 
+	<div id='mbe'></div>
+		<div id="div1">
+		<div id="div2"></div>
+			<input type="text" value="" id="tex1" >
+			<input type="button" value="确定" id="button1">
+			<input type="button" value="取消" id="button2">
+		</div>
+	</div>
+	
+ </body>
+</html>
